@@ -13,7 +13,7 @@ use App\Entity\Activity;
 use App\Entity\Customer;
 use App\Entity\Project;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
@@ -41,9 +41,6 @@ class CustomerFixtures extends Fixture
     public const MIN_ACTIVITIES_PER_PROJECT = 0;
     public const MAX_ACTIVITIES_PER_PROJECT = 25;
 
-    /**
-     * @param ObjectManager $manager
-     */
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('at_AT');

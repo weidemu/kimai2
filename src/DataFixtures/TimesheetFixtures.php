@@ -18,7 +18,7 @@ use App\Entity\UserPreference;
 use App\Timesheet\Util;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
 /**
@@ -103,7 +103,6 @@ class TimesheetFixtures extends Fixture implements DependentFixtureInterface
 
                 if ($i % self::BATCH_SIZE === 0) {
                     $manager->flush();
-                    $manager->clear(Timesheet::class);
                 }
             }
 
@@ -121,7 +120,6 @@ class TimesheetFixtures extends Fixture implements DependentFixtureInterface
             }
 
             $manager->flush();
-            $manager->clear(Timesheet::class);
         }
         $manager->flush();
 
@@ -137,8 +135,7 @@ class TimesheetFixtures extends Fixture implements DependentFixtureInterface
         }
 
         $manager->flush();
-        $manager->clear(Timesheet::class);
-        $manager->clear(Tag::class);
+        $manager->clear();
     }
 
     /**

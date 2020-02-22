@@ -11,7 +11,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Tag;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
 /**
@@ -72,10 +72,10 @@ class TagFixtures extends Fixture
 
             if ($i % self::BATCH_SIZE === 0) {
                 $manager->flush();
-                $manager->clear(Tag::class);
+                $manager->clear();
             }
         }
         $manager->flush();
-        $manager->clear(Tag::class);
+        $manager->clear();
     }
 }

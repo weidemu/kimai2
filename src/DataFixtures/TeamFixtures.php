@@ -14,7 +14,7 @@ use App\Entity\Team;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
 /**
@@ -130,11 +130,11 @@ class TeamFixtures extends Fixture implements DependentFixtureInterface
 
             if ($i % self::BATCH_SIZE === 0) {
                 $manager->flush();
-                $manager->clear(Team::class);
+                $manager->clear();
             }
         }
 
         $manager->flush();
-        $manager->clear(Team::class);
+        $manager->clear();
     }
 }
